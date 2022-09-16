@@ -2,3 +2,7 @@
 1663225039 source:c:\users\chito\documents\github\tareas_ie0217_andres_artavia\tarea01\metodo_numerico\main.cpp
 	<iostream>
 
+1663291364 source:c:\users\chito\documents\github\tareas_ie0217_andres_artavia\tarea01\metodo_numerico\newton_raphson.cpp
+	<iostream>
+	<cmath>
+

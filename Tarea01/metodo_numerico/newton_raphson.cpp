@@ -1,14 +1,6 @@
 #include <iostream>
+#include <cmath>
 
-class funcion
-{
-    float resolverEcuacion (x)
-    {
-        #
-    }
+using namespace std;
 
-    float resolverDerivada (x)
-    {
-        #
-    }
-};
+
