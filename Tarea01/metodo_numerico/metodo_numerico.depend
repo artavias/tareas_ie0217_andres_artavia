@@ -1,12 +1,11 @@
 # depslib dependency file v1.0
-1663443146 source:c:\users\chito\documents\github\tareas_ie0217_andres_artavia\tarea01\metodo_numerico\main.cpp
-	"newton_raphson.h"
-	<stdio.h>
-
-1663400038 source:c:\users\chito\documents\github\tareas_ie0217_andres_artavia\tarea01\metodo_numerico\newton_raphson.cpp
+1663450107 source:c:\users\chito\documents\github\tareas_ie0217_andres_artavia\tarea01\metodo_numerico\main.cpp
 	"newton_raphson.h"
 
-1663400063 c:\users\chito\documents\github\tareas_ie0217_andres_artavia\tarea01\metodo_numerico\newton_raphson.h
+1663451180 source:c:\users\chito\documents\github\tareas_ie0217_andres_artavia\tarea01\metodo_numerico\newton_raphson.cpp
+	"newton_raphson.h"
+
+1663451223 c:\users\chito\documents\github\tareas_ie0217_andres_artavia\tarea01\metodo_numerico\newton_raphson.h
 	<stdio.h>
 	<cmath>
 

@@ -5,7 +5,7 @@
 #include<cmath>
 using namespace std;
 
-//Se define la clase funcion para evaluar la funcion y su derivada y calcular el siguiente x mediante la formula del metodo
+//Se define la clase funcion para evaluar la funcion y su derivada
 class evaluar
 {
     public:
@@ -16,6 +16,7 @@ class evaluar
 
 };
 
+//Se declara la clase siguiente para calcular el valor siguiente en el metodo
 class siguiente: public evaluar
 {
     public:
@@ -23,7 +24,7 @@ class siguiente: public evaluar
     float calcular_siguiente (float x);
 };
 
-
+//Se declara la clase error para calcular el error del metodo
 class error: public siguiente
 {
     public:
@@ -31,6 +32,7 @@ class error: public siguiente
     float calcular_error (float x);
 };
 
+//Se declara la clase newton para aplicar el algoritmo del metodo
 class newton: public error
 {
     public:
