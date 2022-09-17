@@ -4,11 +4,18 @@ using namespace std;
 
 int main()
 {
-
+    float x = 0;
+    float error = 0;
     newton a;
 
-    printf("El resultado es %.12f" , a.newton_raphson(0.75, 0.001));
+    printf("Ingrese el valor inicial de x y el error permitido\n");
 
+    scanf("%f", &x);
+    scanf("%f", &error);
+
+    printf("El resultado es %f" , a.newton_raphson(x, error));
+
+    return 0;
 }
 
 

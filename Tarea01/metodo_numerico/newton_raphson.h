@@ -3,7 +3,6 @@
 
 #include<stdio.h>
 #include<cmath>
-#include<iostream>
 using namespace std;
 
 //Se define la clase funcion para evaluar la funcion y su derivada y calcular el siguiente x mediante la formula del metodo
@@ -17,7 +16,7 @@ class evaluar
 
 };
 
-class siguiente
+class siguiente: public evaluar
 {
     public:
 
@@ -25,7 +24,7 @@ class siguiente
 };
 
 
-class error: public evaluar
+class error: public siguiente
 {
     public:
 

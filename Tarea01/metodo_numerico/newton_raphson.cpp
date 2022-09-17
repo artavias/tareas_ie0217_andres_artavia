@@ -18,13 +18,10 @@ float evaluar::evaluarDerivada (float x)
 }
 
 //El siguiente metodo utiliza los metodos de funcion para calcular el siguiente valor de x
-float evaluar::calcular_siguiente (float x)
+float siguiente::calcular_siguiente (float x)
 {
     return x - (evaluarFuncion(x)/evaluarDerivada(x));
 }
-
-
-
 
 
 
