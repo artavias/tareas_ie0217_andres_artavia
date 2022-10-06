@@ -19,9 +19,11 @@ int main(){
     cout<<"Ingrese la cantidad de estudiantes: ";
     scanf("%d", &x);
 
+
+    //Se agrega al vector nombres cada estudiante
     for(int i=0; i < x; i++){
         string nombre="";
-        cout<<"Ingrese el nombre de la persona "<<i+1<<": "<<endl;
+        cout<<"Ingrese el nombre del estudiante "<<i+1<<": "<<endl;
         cin>>nombre;
         nombres.push_back(nombre);
     };
@@ -29,7 +31,7 @@ int main(){
 
     vector<string>:: iterator k;
 
-    
+    //Por cada nombre se ingresa la nota en cada materia
     for(k = nombres.begin(); k != nombres.end(); ++k){
             float nota_m=0;
             cout<<"Ingrese la nota de "<<*k<<" en Matematicas: "<<"\n"<<endl;
@@ -57,6 +59,7 @@ int main(){
             EdFisica = a.insertar_tupla(*k, nota_ed, EdFisica);
     };
 
+    //Se agregan las materias al registro b y se imprimen las notas
     b.materias.push_back(Matematicas);
     b.materias.push_back(Ciencias);
     b.materias.push_back(Espanol);

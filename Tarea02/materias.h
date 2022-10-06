@@ -8,23 +8,26 @@
 
 using namespace std;
 
+//Declaracion del struct record
 struct Record{
     string nombre_estudiante;
     float nota_estudiante;
 };
 
+//Declaracion de la clase Materia que contiene una lista del struct Record
 class Materia{
     public:
         string nombre_materia;
         list<Record> estudiantes;
 };
 
+//Declaracion de Registro que contiene una lista de la clase Materia
 class Registro: public Materia{
     public:
         list<Materia> materias;
 };
 
-
+//Declaracion de la clase control notas
 class ControlNotas: public Registro{
     public:
 
