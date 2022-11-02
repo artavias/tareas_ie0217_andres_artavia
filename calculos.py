@@ -11,8 +11,11 @@ def ordenar_lista(lista_A, lista_B):
 
 
 def remover_pares(listaA):
+    '''La siguiente funcion se encarga de remover
+    los numeros pares de una lista de numeros'''
 
     pops = 0
+    
     for i in range(len(listaA)):
         if listaA[i-pops] % 2 == 0:
             listaA.pop(i-pops)
