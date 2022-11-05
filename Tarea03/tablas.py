@@ -1,17 +1,17 @@
 import pandas as pd
 from os import getcwd
 
-
-
-
+#datos de estudiantes
 datos = {'nombre': ["Juan Carlos","Francisco","Edudardo","Anabelle","Sonia","Mathew","Jimmy"],
          'carrera': ["Ing. Eléctrica","Educacion Física","Matemáticas","Ing. Mecánica","Derecho","Idiiomas","Ing. Civil"],
          'Edad': [21,20,19,29,22,21,22]
          }
 
-
+#datos para indexacion
 indices = ["e1", "e2", "e3", "e4", "e5", "e6", "e7"]
 df = pd.DataFrame(datos, index=indices)
+
+
 df_por_nombre = df.sort_values(by=['nombre'])
 df_por_carrera = df.sort_values(by=['carrera'], ascending=False)
 
@@ -28,7 +28,7 @@ print("Utilizando indice textual\n", df[3:], "\n")
 
 print("Carrera y edad para 2, 3 y 5:\n", df.loc[["e3", "e4", "e6"]][["carrera", "Edad"]])
 
-
+#Se exporta el dataframe como un archivo xlsx al directorio actual utilizando getcwd
 print("\nExportando DataFrame a excel como \'DataFrame_B90789a.xlsx\' en el directorio actual...")
 path = getcwd() + "\DataFrame_B90789.xlsx"
 data_a_excel = pd.ExcelWriter(path)

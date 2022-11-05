@@ -55,6 +55,5 @@ print("- Desviacion: {:0.4f}".format(desviacion2))
 
 
 remover_pares(lista3)
-
 print("\nLista 3 (lista 1 sin pares):\n", lista3)
 
