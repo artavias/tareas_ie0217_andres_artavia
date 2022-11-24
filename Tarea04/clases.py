@@ -149,7 +149,7 @@ class UsuarioTasaCero(UsuarioBase, BaseIO):
         if (self.__Plazo) != 0:
             print("El cliente", self._UsuarioBase__Propietario,"tiene una operacion vigente\n")
         else:
-            self.__Plazo = int(self.Input("Plazo: "))
+            self.__Plazo = int(self.Input("Plazo para usuario %s: " %self._UsuarioBase__Propietario"))
             self.__MontoConsumoMes = float(self.Input("Consumo mensual: "))
 
 
