@@ -1,6 +1,10 @@
 import sys
 from abc import ABCMeta, abstractmethod
 
+"""La siguiente clase se encarga de ser el metaclass
+de los usuarios, los metodos abstractos se deben implementar
+en las clases hijas y se accesan mediante los metodos
+Aplicar() y  Asignar()"""
 class UsuarioBase(metaclass=ABCMeta):
 
     def __init__(self):
@@ -46,7 +50,8 @@ class UsuarioBase(metaclass=ABCMeta):
         self.__AsignarOperacion()
 
 
-
+"""La siguiente clase se utiliza para tomar el
+input y formatearlo"""
 class BaseIO():
 
     def Input(self, info=""):
@@ -55,7 +60,11 @@ class BaseIO():
         return result
 
 
-
+"""La clase UsuarioAhorro es hija de la clase
+UsuarioBase, implementa el metodo AplicarInversion()
+el cual descuenta del monto disponible el monto ahorro
+y lo suma a la variable MontoAhorro. El metodo
+AasignarOperacion() se define pero no se utiliza"""
 class UsuarioAhorro(UsuarioBase, BaseIO):
 
     def __init__(self):
@@ -99,7 +108,12 @@ class UsuarioAhorro(UsuarioBase, BaseIO):
         self.Porcentaje = int(self.Input("Porcentaje de Ahorro: "))
 
 
-
+"""El UsuarioTasaCero tambien es clase hija de 
+UsuarioBase. El metodo AplicarInversion() se encarga
+de restar al monto disponible el MontoConsumoMes y
+restarle 1 al plazo. El metodo AsignarOperacion()
+permite asignar un plazo y un MontoConsumoMes si el
+Plazo es igual a 0."""
 class UsuarioTasaCero(UsuarioBase, BaseIO):
 
     def __init__(self):
@@ -147,6 +161,15 @@ class UsuarioTasaCero(UsuarioBase, BaseIO):
 
 
 
+"""El UsuarioPagosServicios es hija de UsuarioBase.
+Se pueden insertar servicios a pagar con el metodo
+InsertarServicio(). Eliminarlos con EliminarServicio()
+o visualizarlos con VisualizarServicios(). El metodo
+AplicarInvsersion() se encarga de restar el el cargo 
+automatico al monto disponible si los fondos son
+suficientes. AsignarOperacion() se encarga de darle
+un nuevo valor al cargo automatico para cada servicio
+si no hay una operacion vigente."""
 class UsuarioPagosServicios(UsuarioBase, BaseIO):
 
     def __init__(self):
@@ -200,7 +223,11 @@ class UsuarioPagosServicios(UsuarioBase, BaseIO):
             self.InsertarServicio()
 
 
-
+"""Clase de servicio publico para manejar
+los servicios de forma mas eficiente en la
+clase UsuarioPagosServicios, al instanciarse
+pide al usuario el nombre del servicio y el
+cargo automatico"""
 class ServicioPublico(BaseIO):
 
     def __init__(self):
@@ -211,9 +238,16 @@ class ServicioPublico(BaseIO):
     def __Captura__(self):
         self.EmpresaServicioPublico = str(self.Input("Servicio Publico: "))
         self.CargoAutomatico = float(self.Input("Cargo automatico: "))
-        
-        
 
+
+"""La clase agenciabancaria se encarga de darle
+opciones al usuario, crear las clases de usuarios
+que se soliciten, y Aplicar o Asignar operaciones
+para todos los usuarios, listar los usuarios y
+asignar fondos a cada usuario.
+Al instanciarse el programa sigue corriendo al menos
+que se selecciones la opcion '8' o algo diferente a
+los numeros del 1-7"""
 class agenciabancaria(BaseIO):
 
     def __init__(self):
@@ -344,4 +378,4 @@ class agenciabancaria(BaseIO):
         elif opcion == 8:
             quit()
 
-Banco = agenciabancaria()        
+Banco = agenciabancaria()
