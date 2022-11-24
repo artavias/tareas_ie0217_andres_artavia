@@ -211,3 +211,65 @@ class ServicioPublico(BaseIO):
     def __Captura__(self):
         self.EmpresaServicioPublico = str(self.Input("Servicio Publico: "))
         self.CargoAutomatico = float(self.Input("Cargo automatico: "))
+
+        
+        
+class agenciabancaria(BaseIO):
+
+    def __init__(self):
+        self.UsuariosAhorro = []
+        self.UsuariosTasaCero = []
+        self.UsuariosPagosServicios = []
+        self.Opciones()
+
+
+    def Opciones(self):
+
+        print("-------------------------------------")
+        print("1) Agregar UsuarioAhorro")
+        print("2) Agregar UsuarioTasaCero")
+        print("3) Agregar UsuariosPagosServicios")
+        print("4) Mostrar lista de usuarios")
+        print("5) Asignar Fondos")
+        print("6) Asignar Operaciones")
+        print("7) Procesar Inversiones")
+        print("8) Final")
+        print("-------------------------------------")
+        opcion = int(self.Input("Ingrese una opcion: "))
+
+        if opcion == 1:
+            print("Agregando UsuarioAhorro\n")
+            self.UsuariosAhorro.append(UsuarioAhorro())
+
+            self.Opciones()
+
+        elif opcion == 2:
+            print("Agregando UsuarioTasaCero\n")
+            self.UsuariosTasaCero.append(UsuarioTasaCero())
+
+            self.Opciones()
+
+        elif opcion == 3:
+            print("Agregando UsuarioPagosServicios\n")
+            self.UsuariosPagosServicios.append(UsuarioPagosServicios())
+            print("a) Ingresar servicio \nb) Mostrar servicios\nc) Eliminar servicio.\nd) Regresar.\n")
+            opcion = str(self.Input("Ingrese una opcion: "))
+
+            while opcion != "d":
+                if opcion == "a":
+                    self.UsuariosPagosServicios[-1].InsertarServicio()
+                    print("\na) Ingresar servicio \nb) Mostrar servicios\nc) Eliminar servicio.\nd) Regresar.\n")
+                    opcion = str(self.Input("Ingrese una opcion: "))
+
+                elif opcion == "b":
+                    self.UsuariosPagosServicios[-1].VisualizarServicios()
+                    print("\na) Ingresar servicio \nb) Mostrar servicios\nc) Eliminar servicio.\nd) Regresar.\n")
+                    opcion = str(self.Input("Ingrese una opcion: "))
+
+                elif opcion == "c":
+                    servicio = str(self.Input("Servicio a remover: "))
+                    self.UsuariosPagosServicios[-1].EliminarServicio(servicio)
+                    print("\na) Ingresar servicio \nb) Mostrar servicios\nc) Eliminar servicio.\nd) Regresar.\n")
+                    opcion = str(self.Input("Ingrese una opcion: "))
+
+            self.Opciones()
