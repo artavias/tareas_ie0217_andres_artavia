@@ -144,3 +144,70 @@ class UsuarioTasaCero(UsuarioBase, BaseIO):
         self._UsuarioBase__MontoDisponible = float(self.Input("Monto Disponible: "))
         self.__MontoConsumoMes = float(self.Input("Monto de Consumo Mensual: "))
         self.__Plazo = int(self.Input("Plazo: "))
+
+
+
+class UsuarioPagosServicios(UsuarioBase, BaseIO):
+
+    def __init__(self):
+        self.Servicios = []
+        super().__init__()
+        self.__Captura__()
+
+
+    def InsertarServicio(self):
+        servicio = ServicioPublico()
+        self.Servicios.append(servicio)
+
+
+    def EliminarServicio(self, servicio):
+        for serv in self.Servicios:
+            if serv.EmpresaServicioPublico == servicio:
+                self.Servicios.remove(serv)
+
+
+    def VisualizarServicios(self):
+        for Servicio in self.Servicios:
+            print("%s: %.2f" %(Servicio.EmpresaServicioPublico, Servicio.CargoAutomatico))
+
+
+    def _UsuarioBase__AplicarInversion(self):
+        for Servicio in self.Servicios:
+            if (self._UsuarioBase__MontoDisponible - Servicio.CargoAutomatico) >= 0:
+                self._UsuarioBase__MontoDisponible -= Servicio.CargoAutomatico
+                Servicio.CargoAutomatico = 0
+            else:
+                print("Fondos insuficientes para pagar el servicio: %s\n"
+                    %(Servicio.EmpresaServicioPublico)
+                )
+
+
+    def _UsuarioBase__AsignarOperacion(self):
+        for Servicio in self.Servicios:
+            if Servicio.CargoAutomatico != 0:
+                print("Operacion vigente de usuario '%s' para servicio: %s\n"
+                    %(self.Propietario, Servicio.EmpresaServicioPublico)
+                )
+            else:
+                Servicio.CargoAutomatico = float(self.Input("Cargo automatico para %s: \n" %(Servicio.EmpresaServicioPublico)))
+
+    
+    def __Captura__(self):
+        self._UsuarioBase__Propietario = str(self.Input("Propietario: "))
+        self._UsuarioBase__MontoDisponible = float(self.Input("Monto Disponible: "))
+        n_servicios = int(self.Input("Cantidad de servicios: "))
+        for i in range(n_servicios):
+            self.InsertarServicio()
+
+
+
+class ServicioPublico(BaseIO):
+
+    def __init__(self):
+        self.EmpresaServicioPublico = ''
+        self.CargoAutomatico = 0
+        self.__Captura__()
+
+    def __Captura__(self):
+        self.EmpresaServicioPublico = str(self.Input("Servicio Publico: "))
+        self.CargoAutomatico = float(self.Input("Cargo automatico: "))
