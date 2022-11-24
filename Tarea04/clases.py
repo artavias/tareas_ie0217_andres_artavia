@@ -211,3 +211,137 @@ class ServicioPublico(BaseIO):
     def __Captura__(self):
         self.EmpresaServicioPublico = str(self.Input("Servicio Publico: "))
         self.CargoAutomatico = float(self.Input("Cargo automatico: "))
+        
+        
+
+class agenciabancaria(BaseIO):
+
+    def __init__(self):
+        self.UsuariosAhorro = []
+        self.UsuariosTasaCero = []
+        self.UsuariosPagosServicios = []
+        self.Opciones()
+
+
+    def Opciones(self):
+
+        print("-------------------------------------")
+        print("1) Agregar UsuarioAhorro")
+        print("2) Agregar UsuarioTasaCero")
+        print("3) Agregar UsuariosPagosServicios")
+        print("4) Mostrar lista de usuarios")
+        print("5) Asignar Fondos")
+        print("6) Asignar Operaciones")
+        print("7) Procesar Inversiones")
+        print("8) Final")
+        print("-------------------------------------")
+        opcion = int(self.Input("Ingrese una opcion: "))
+
+        if opcion == 1:
+            print("Agregando UsuarioAhorro\n")
+            self.UsuariosAhorro.append(UsuarioAhorro())
+
+            self.Opciones()
+
+        elif opcion == 2:
+            print("Agregando UsuarioTasaCero\n")
+            self.UsuariosTasaCero.append(UsuarioTasaCero())
+
+            self.Opciones()
+
+        elif opcion == 3:
+            print("Agregando UsuarioPagosServicios\n")
+            self.UsuariosPagosServicios.append(UsuarioPagosServicios())
+            print("a) Ingresar servicio \nb) Mostrar servicios\nc) Eliminar servicio.\nd) Regresar.\n")
+            opcion = str(self.Input("Ingrese una opcion: "))
+
+            while opcion != "d":
+                if opcion == "a":
+                    self.UsuariosPagosServicios[-1].InsertarServicio()
+                    print("\na) Ingresar servicio \nb) Mostrar servicios\nc) Eliminar servicio.\nd) Regresar.\n")
+                    opcion = str(self.Input("Ingrese una opcion: "))
+
+                elif opcion == "b":
+                    self.UsuariosPagosServicios[-1].VisualizarServicios()
+                    print("\na) Ingresar servicio \nb) Mostrar servicios\nc) Eliminar servicio.\nd) Regresar.\n")
+                    opcion = str(self.Input("Ingrese una opcion: "))
+
+                elif opcion == "c":
+                    servicio = str(self.Input("Servicio a remover: "))
+                    self.UsuariosPagosServicios[-1].EliminarServicio(servicio)
+                    print("\na) Ingresar servicio \nb) Mostrar servicios\nc) Eliminar servicio.\nd) Regresar.\n")
+                    opcion = str(self.Input("Ingrese una opcion: "))
+
+            self.Opciones()
+
+        elif opcion == 4:
+            print("Usuarios Ahorro:\n")
+            for usuario in self.UsuariosAhorro:
+                print("Usuario: %s" %usuario.Propietario)
+                print("Monto Disponible: %.2f" %usuario.MontoDisponible)
+                print("Porcentaje de Ahorro: %i" %usuario.Porcentaje)
+                print("Monto de Ahorro: %i\n" %usuario.MontoAhorro)
+
+            print("Usuarios TasaCero:\n")
+            for usuario in self.UsuariosTasaCero:
+                print("Usuario: %s" %usuario.Propietario)
+                print("Monto Disponible: %.2f" %usuario.MontoDisponible)
+                print("Monto de Consumo Mensual: %.2f" %usuario._UsuarioTasaCero__MontoConsumoMes)
+                print("Plazo: %i\n" %usuario._UsuarioTasaCero__Plazo)
+
+            print("Usuarios PagosServicios:\n")
+            for usuario in self.UsuariosPagosServicios:
+                print("Usuario: %s" %usuario.Propietario)
+                print("Monto Disponible: %.2f" %usuario.MontoDisponible)
+                usuario.VisualizarServicios()
+                print("\n")
+
+            self.Opciones()
+
+        elif opcion == 5:
+            print("Seleccione un usuario: \n")
+            for usuario in self.UsuariosAhorro:
+                print("Usuario: %s" %usuario.Propietario)
+            for usuario in self.UsuariosTasaCero:
+                print("Usuario: %s" %usuario.Propietario)
+            for usuario in self.UsuariosPagosServicios:
+                print("Usuario: %s" %usuario.Propietario)
+
+            usuario_a_modificar = str(self.Input())
+
+            for usuario in self.UsuariosAhorro:
+                if usuario.Propietario == usuario_a_modificar:
+                    usuario.MontoDisponible = float(self.Input("Monto Disponible: "))
+            for usuario in self.UsuariosTasaCero:
+                if usuario.Propietario == usuario_a_modificar:
+                    usuario.MontoDisponible = float(self.Input("Monto Disponible: "))
+            for usuario in self.UsuariosPagosServicios:
+                if usuario.Propietario == usuario_a_modificar:
+                    usuario.MontoDisponible = float(self.Input("Monto Disponible: "))
+
+            self.Opciones()
+
+        elif opcion == 6:
+            for usuario in self.UsuariosAhorro:
+                usuario.Asignar()
+            for usuario in self.UsuariosTasaCero:
+                usuario.Asignar()
+            for usuario in self.UsuariosPagosServicios:
+                usuario.Asignar()
+
+            self.Opciones()
+
+        elif opcion == 7:
+            for usuario in self.UsuariosAhorro:
+                usuario.Aplicar()
+            for usuario in self.UsuariosTasaCero:
+                usuario.Aplicar()
+            for usuario in self.UsuariosPagosServicios:
+                usuario.Aplicar()
+            
+            self.Opciones()
+
+        elif opcion == 8:
+            quit()
+
+Banco = agenciabancaria()        
